@@ -123,4 +123,34 @@ using System.Collections;
         //3
         Assert.AreEqual(game.score, 0);
     }
+
+
+
+    [UnityTest]
+    public IEnumerator RotateLeftTest()
+    {
+        //Should start as 0
+        float starterZRotation = game.GetShip().transform.rotation.z;
+
+        game.GetShip().rotateLeft();
+
+
+        yield return new WaitForSeconds(0.1f);
+
+        Assert.Equals(game.GetShip().transform.rotation.y, starterZRotation - 15);
+    }
+
+    [UnityTest]
+    public IEnumerator RotateRightTest()
+    {
+        //Should start as 0
+        float starterZRotation = game.GetShip().transform.rotation.z;
+
+        game.GetShip().rotateRight();
+
+
+        yield return new WaitForSeconds(0.1f);
+
+        Assert.Equals(game.GetShip().transform.rotation.y, starterZRotation + 15);
+    }
 }
